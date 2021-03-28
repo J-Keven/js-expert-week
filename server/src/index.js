@@ -12,16 +12,5 @@ const server = await socketServer.initialize(events)
 const controller = new Controller({ socketServer })
 console.log("socket on in port", server.address().port)
 
-
-
 events.on(constants.events.NEW_USER_CONNECTED, controller.onNewConnection.bind(controller))
 
-// events.on(constants.events.NEW_USER_CONNECTED, socket => {
-//   console.log("new connection", socket.id);
-//   socket.on("data", data => {
-//     console.log("server received", data.toString())
-
-//     socket.write("Wolrd!")
-//   })
-
-// })
