@@ -1,0 +1,13 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "user01": "node index.js --username jhonas --room room01 --host https://localhost:3333"
+  },
+  "dependencies": {
+    "blessed": "^0.1.81"
+  }
+}
