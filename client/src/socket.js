@@ -1,11 +1,43 @@
+import Events from "events"
+
 class Socket {
   #serverConnection = {}
+  #serverListener = new Events()
 
   constructor({ host, port, protocol }) {
     this.host = host
     this.port = port
     this.protocol = protocol
 
+  }
+
+  async sendMessage(event, message) {
+    this.#serverConnection.write(JSON.stringify({ event, message }))
+  }
+
+  attachEvents(events) {
+    this.#serverConnection.on("data", data => {
+      try {
+        data
+          .toString()
+          .split('\n')
+          .filter(line => !!line)
+          .map(JSON.parse)
+          .map(({ event, message }) => {
+            this.#serverListener.emit(event, message)
+          })
+      } catch (error) {
+        console.log("invalid!!", data.toString(), error)
+      }
+    })
+
+
+    this.#serverConnection.on("end", () => console.log("I Desconnected"))
+    this.#serverConnection.on("error", () => console.log("DEU MERDA!!!!"))
+
+    for (const [key, value] of events) {
+      this.#serverListener.on(key, value)
+    }
   }
 
   async createConnection() {

@@ -6,7 +6,8 @@ export const constants = {
       STATUS_UPDATED: "status:update"
     },
     socket: {
-
+      JOIN_ROOM: "joinRoom",
+      MESSAGE: "message"
     }
   }
 }

@@ -9,6 +9,7 @@ class TerminalController {
   #onInputReceived(eventEmitter) {
     return function () {
       const message = this.getValue()
+      eventEmitter.emit(constants.events.app.MESSAGE_RECEIVED, message)
       console.log(message)
       this.clearValue()
     }
@@ -87,17 +88,16 @@ class TerminalController {
     components.input.focus()
     components.screen.render()
 
-
-    setInterval(() => {
-      const users = ["J-keven"]
-      eventEmitter.emit(constants.events.app.STATUS_UPDATED, users)
-      users.push("ironMan")
-      eventEmitter.emit(constants.events.app.STATUS_UPDATED, users)
-      users.push("spiderMan", "superMan")
-      eventEmitter.emit(constants.events.app.STATUS_UPDATED, users)
-      users.push("iara")
-      eventEmitter.emit(constants.events.app.STATUS_UPDATED, users)
-    }, 2000)
+    // setInterval(() => {
+    //   const users = ["J-keven"]
+    //   eventEmitter.emit(constants.events.app.STATUS_UPDATED, users)
+    //   users.push("ironMan")
+    //   eventEmitter.emit(constants.events.app.STATUS_UPDATED, users)
+    //   users.push("spiderMan", "superMan")
+    //   eventEmitter.emit(constants.events.app.STATUS_UPDATED, users)
+    //   users.push("iara")
+    //   eventEmitter.emit(constants.events.app.STATUS_UPDATED, users)
+    // }, 2000)
   }
 }
 

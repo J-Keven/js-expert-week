@@ -5,7 +5,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "user01": "node index.js --username jhonas --room room01 --host http://localhost:9898"
+    "user01": "node index.js --username jhonas --room room01 --host http://localhost:9898",
+    "user02": "node index.js --username keven --room room01 --host http://localhost:9898"
   },
   "dependencies": {
     "blessed": "^0.1.81"
